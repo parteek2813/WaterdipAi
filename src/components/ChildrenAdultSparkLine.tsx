@@ -62,7 +62,7 @@ const ChildrenAdultSparkLine = () => {
 
   const EndChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const Evalue = parseInt(e.target.value);
-    setStart(Evalue);
+    setEnd(Evalue);
   };
 
   const HandleSubmitFunction = (e: React.FormEvent<HTMLFormElement>) => {
@@ -77,7 +77,29 @@ const ChildrenAdultSparkLine = () => {
     );
   };
 
-  return <div>ChildrenAdultSparkLine</div>;
+  return (
+    <div className="graph-indiv">
+      <Heading heading="No. of Adults and Childrens visiting per day" />
+      <form onSubmit={HandleSubmitFunction}>
+        <Selects
+          id="start-date"
+          label="Start Date"
+          defaultValue={start}
+          onChange={StartChangeDate}
+        />
+        <Selects
+          id="end-date"
+          defaultValue={end}
+          label="End Date"
+          onChange={EndChangeDate}
+        />
+        <Button variant="contained" type="submit">
+          Filter
+        </Button>
+      </form>
+      <Chart options={options} series={series} type="line" width="100%" />
+    </div>
+  );
 };
 
 export default ChildrenAdultSparkLine;

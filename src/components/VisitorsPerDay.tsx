@@ -46,7 +46,7 @@ const VisitorsPerDay = () => {
   };
   const EndChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const Evalue = parseInt(e.target.value);
-    setStart(Evalue);
+    setEnd(Evalue);
   };
 
   const HandleSubmitFunction = (e: React.FormEvent<HTMLFormElement>) => {
