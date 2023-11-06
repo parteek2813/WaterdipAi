@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Waterdip2 from "../assets/waterdip_logo2.webp";
 import AboutUs from "../components/utils/AboutUs";
 import ServicesModal from "./utils/Services";
+import IndustriesModal from "./utils/Industries";
+import ResourcesModal from "./utils/Resources";
 
 const pages = ["About Us", "Our Services", "industries", "Resources"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -150,6 +152,14 @@ const Navbar: React.FC = () => {
 
                 {selectedPage === "Our Services" && (
                   <ServicesModal aboutUsOpen={aboutUsOpen} />
+                )}
+
+                {selectedPage === "industries" && (
+                  <IndustriesModal aboutUsOpen={aboutUsOpen} />
+                )}
+
+                {selectedPage === "Resources" && (
+                  <ResourcesModal aboutUsOpen={aboutUsOpen} />
                 )}
               </Button>
             ))}

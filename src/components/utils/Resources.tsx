@@ -18,7 +18,7 @@ const style = {
 interface AboutUsProps {
   aboutUsOpen: boolean;
 }
-const BasicModal: React.FC<AboutUsProps> = ({ aboutUsOpen }) => {
+const ResourcesModal: React.FC<AboutUsProps> = ({ aboutUsOpen }) => {
   return (
     <div>
       <Modal
@@ -29,22 +29,16 @@ const BasicModal: React.FC<AboutUsProps> = ({ aboutUsOpen }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            About Us
+            Industries We Works
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Welcome to Waterdip, a cutting-edge technology-driven organization
-            dedicated to revolutionizing the world of data and analytics.
-            Established in 2022, we have quickly risen to prominence as a
-            trusted leader in the field of data science, machine learning, and
-            artificial intelligence.
+            Case Study
           </Typography>
-
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            At Waterdip, we firmly believe that data is the driving force behind
-            informed decision-making and business success. With a team of
-            passionate data scientists, engineers, and experts, we strive to
-            unlock the full potential of data, empowering businesses to gain
-            actionable insights and make data-driven decisions.
+            Blog
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Thought Leadership
           </Typography>
         </Box>
       </Modal>
@@ -52,4 +46,4 @@ const BasicModal: React.FC<AboutUsProps> = ({ aboutUsOpen }) => {
   );
 };
 
-export default BasicModal;
+export default ResourcesModal;
