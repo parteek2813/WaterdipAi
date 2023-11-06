@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Waterdip2 from "../assets/waterdip_logo2.webp";
+import AboutUs from "../components/utils/AboutUs";
+import ServicesModal from "./utils/Services";
 
 const pages = ["About Us", "Our Services", "industries", "Resources"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -39,9 +41,29 @@ const Navbar: React.FC = () => {
     setAnchorElUser(null);
   };
 
+  const [aboutUsOpen, setAboutUsOpen] = React.useState<boolean>(false);
+  const [selectedPage, setSelectedPage] = React.useState<string | any>(null);
+
+  const handleSelectedPage = (page: any) => {
+    setSelectedPage(page);
+    handleOpenAboutUs();
+  };
+
+  const handleOpenAboutUs = () => {
+    setAboutUsOpen(!aboutUsOpen);
+  };
+
+  React.useEffect(() => {
+    let handler = () => {
+      setAboutUsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handler);
+  });
+
   return (
     <AppBar style={{ marginBottom: "50px" }} position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
           <img
@@ -54,7 +76,7 @@ const Navbar: React.FC = () => {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href=""
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -69,6 +91,7 @@ const Navbar: React.FC = () => {
             WATERDIP
           </Typography>
 
+          {/* Visible in small screens */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -80,8 +103,6 @@ const Navbar: React.FC = () => {
             >
               <MenuIcon />
             </IconButton>
-
-            {/* Visible in small screens */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -113,7 +134,7 @@ const Navbar: React.FC = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleSelectedPage(page)}
                 sx={{
                   my: 2,
                   color: "white",
@@ -122,6 +143,14 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {page}
+
+                {selectedPage === "About Us" && (
+                  <AboutUs aboutUsOpen={aboutUsOpen} />
+                )}
+
+                {selectedPage === "Our Services" && (
+                  <ServicesModal aboutUsOpen={aboutUsOpen} />
+                )}
               </Button>
             ))}
           </Box>
