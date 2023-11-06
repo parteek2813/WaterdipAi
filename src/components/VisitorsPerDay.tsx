@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { data, HotelData } from "../data/data.ts";
 import Chart from "react-apexcharts";
 import Button from "@mui/material/Button";
+import Heading from "./utils/Heading.tsx";
+import Selects from "../components/utils/selects.jsx";
 
-interface Props {
-  hotelData: HotelData[];
-}
-
-const VisitorsPerDay: React.FC<Props> = ({ hotelData }) => {
+const VisitorsPerDay = () => {
   const [list, setList] = useState<HotelData[]>(data);
   const [start, setStart] = useState<number>(1);
   const [end, setEnd] = useState<number>(31);
@@ -26,6 +24,22 @@ const VisitorsPerDay: React.FC<Props> = ({ hotelData }) => {
       }, 0)
   );
 
+  // Setup for the Apex Charts
+  const options = {
+    chart: {
+      id: "basic-bar",
+    },
+    xaxis: {
+      categories: allDays,
+    },
+  };
+  const series = [
+    {
+      name: "visitors",
+      data: visitors,
+    },
+  ];
+
   const StartChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const Svalue = parseInt(e.target.value);
     setStart(Svalue);
@@ -35,7 +49,7 @@ const VisitorsPerDay: React.FC<Props> = ({ hotelData }) => {
     setStart(Evalue);
   };
 
-  const HandleSubmitFunction = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const HandleSubmitFunction = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(start, end);
     setList(
@@ -47,7 +61,35 @@ const VisitorsPerDay: React.FC<Props> = ({ hotelData }) => {
     );
   };
 
-  return <div>VisitorsPerDay</div>;
+  return (
+    <div className="graph-indiv">
+      <Heading heading="No. of Visitors per Day" />
+      <form onSubmit={HandleSubmitFunction}>
+        <Selects
+          id="start-date"
+          label="Start Date"
+          defaultValue={start}
+          onChange={StartChangeDate}
+        />
+        <Selects
+          id="end-date"
+          defaultValue={end}
+          label="End Date"
+          onChange={EndChangeDate}
+        />
+        <Button variant="contained" type="submit">
+          Filter
+        </Button>
+      </form>
+      <Chart
+        options={options}
+        series={series}
+        type="line"
+        width="100%"
+        className="height"
+      />
+    </div>
+  );
 };
 
 export default VisitorsPerDay;
