@@ -69,6 +69,9 @@ const VisitorsPerCountry = () => {
   const HandleSubmitFunction = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(start, end);
+    if (end - start < 0) {
+      alert("Invalid Range selected");
+    }
     setList(
       data.filter(
         (date) =>

@@ -38,17 +38,17 @@ const ServicesModal: React.FC<AboutUsProps> = ({ aboutUsOpen }) => {
           </Typography>
 
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Data Engineering Unlock unparalleled success through strategic
+            Data Engineering:- Unlock unparalleled success through strategic
             insights, facilitated by our comprehensive data engineering
             solutions.
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Data Science Achieve your business goals by providing insights into
-            customer behavior, identifying trends, and predicting future
+            Data Science:- Achieve your business goals by providing insights
+            into customer behavior, identifying trends, and predicting future
             outcomes with our end-to-end data science solutions.
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            DataOps and MLOps Empowering Enterprises with Efficient DataOps &
+            DataOps and MLOps:- Empowering Enterprises with Efficient DataOps &
             MLOps, Unveiling Strategic Insights for Seamless Progress.
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
