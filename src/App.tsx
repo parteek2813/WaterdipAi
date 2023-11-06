@@ -1,11 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
+import VisitorsPerDay from "./components/VisitorsPerDay";
 
 function App() {
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div className="app">
+      <VisitorsPerDay />
+    </div>
   );
 }
 
