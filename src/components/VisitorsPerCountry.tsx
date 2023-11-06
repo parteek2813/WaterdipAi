@@ -78,7 +78,31 @@ const VisitorsPerCountry = () => {
     );
   };
 
-  return <div>VisitorsPerCountry</div>;
+  return (
+    <div className="graph-indiv">
+      <Heading heading="No. of Visitors visiting per Country" />
+      <form onSubmit={HandleSubmitFunction}>
+        <Selects
+          key="select1"
+          id="start-date"
+          label="Start Date"
+          defaultValue={start}
+          onChange={StartChangeDate}
+        />
+        <Selects
+          key="select2"
+          id="end-date"
+          defaultValue={end}
+          label="End Date"
+          onChange={EndChangeDate}
+        />
+        <Button variant="contained" type="submit">
+          Filter
+        </Button>
+      </form>
+      <Chart options={options} series={series} type="bar" width="100%" />
+    </div>
+  );
 };
 
 export default VisitorsPerCountry;

@@ -7,7 +7,6 @@ const Selects = (props) => {
     <div className="select">
       <label htmlFor={props.id}>{props.label} :&nbsp;&nbsp;</label>
       <select
-        key={props.id}
         name={props.id}
         id={props.id}
         onChange={props.onChange}

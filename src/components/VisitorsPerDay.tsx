@@ -66,12 +66,14 @@ const VisitorsPerDay = () => {
       <Heading heading="No. of Visitors per Day" />
       <form onSubmit={HandleSubmitFunction}>
         <Selects
+          key="select3"
           id="start-date"
           label="Start Date"
           defaultValue={start}
           onChange={StartChangeDate}
         />
         <Selects
+          key="select4"
           id="end-date"
           defaultValue={end}
           label="End Date"
