@@ -4,11 +4,14 @@ import Chart from "react-apexcharts";
 import Button from "@mui/material/Button";
 import Heading from "./utils/Heading.tsx";
 import Selects from "../components/utils/selects.jsx";
+import useSound from "use-sound";
+import toggle from "../../src/assets/toggle.wav";
 
 const VisitorsPerCountry = () => {
   const [list, setList] = useState<HotelData[]>(data);
   const [start, setStart] = useState<number>(1);
   const [end, setEnd] = useState<number>(31);
+  const [play] = useSound(toggle);
 
   // Storing Each Unique Country in the Set
   const AllCountries = [...new Set(list.map((item) => item.country))];
@@ -99,7 +102,7 @@ const VisitorsPerCountry = () => {
           label="End Date"
           onChange={EndChangeDate}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" onClick={play}>
           Filter
         </Button>
       </form>

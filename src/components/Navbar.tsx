@@ -16,6 +16,8 @@ import AboutUs from "../components/utils/AboutUs";
 import ServicesModal from "./utils/Services";
 import IndustriesModal from "./utils/Industries";
 import ResourcesModal from "./utils/Resources";
+import useSound from "use-sound";
+import toggle from "../../src/assets/toggle.wav";
 
 const pages = ["About Us", "Our Services", "industries", "Resources"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -43,12 +45,14 @@ const Navbar: React.FC = () => {
     setAnchorElUser(null);
   };
 
+  const [play] = useSound(toggle);
   const [aboutUsOpen, setAboutUsOpen] = React.useState<boolean>(false);
   const [selectedPage, setSelectedPage] = React.useState<string | any>(null);
 
   const handleSelectedPage = (page: any) => {
     setSelectedPage(page);
     handleOpenAboutUs();
+    play();
   };
 
   const handleOpenAboutUs = () => {
@@ -74,6 +78,7 @@ const Navbar: React.FC = () => {
             height={40}
             style={{ marginRight: "20px" }}
           />
+
           <Typography
             variant="h6"
             noWrap
